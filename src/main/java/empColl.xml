@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:p="http://www.springframework.org/schema/p" 
+xmlns:util="http://www.springframework.org/schema/util"
+xmlns:tx="http://www.springframework.org/schema/tx" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+
+<!-- <bean id ="emp1" class ="SpringCoreProject.Project1.EmpCollection">
+<property name="empName" value ="Amit"></property>
+<property name="empId" value = "101"></property>
+	to assign values to list
+<property name="empProjectsId"> 
+	<list value-type="java.lang.Integer"> 
+		<value>500</value>
+		<value>501</value>
+		<value>502</value>
+	</list>
+</property>
+	assign values to array
+<property name="teamMem">
+	<array value-type="java.lang.String">
+		<value>Raj</value>
+		<value>Pal</value>
+		<value>Singh</value>
+		</array>
+</property>
+	assign values to array
+<property name="projectName">
+	<map value-type="java.lang.String" key-type="java.lang.Integer">
+	<entry key="01" value="Project01"></entry>
+	<entry key="02" value="Project02"></entry>
+	<entry key="03" value="Project03"></entry>
+	</map>	
+</property>
+</bean> -->
+
+		<!-- Collection merging from parent class -->
+		
+<!-- <bean id ="empParent" class ="SpringCoreProject.Project1.EmpParent">
+<property name="empProjectsId"> 
+	<list value-type="java.lang.Integer"> 
+		<value>600</value>
+		<value>601</value>
+		<value>602</value>
+	</list>
+</property>
+	assign values to array
+<property name="teamMem">
+	<array value-type="java.lang.String">
+		<value>RajP</value>
+		<value>PalP</value>
+		<value>SinghP</value>
+		</array>
+</property>
+	assign values to array
+<property name="projectName">
+	<map value-type="java.lang.String" key-type="java.lang.Integer">
+	<entry key="11" value="Project01P"></entry>
+	<entry key="12" value="Project02P"></entry>
+	<entry key="13" value="Project03P"></entry>
+	</map>	
+</property>
+
+</bean>
+<bean id ="emp1" parent="empParent"  class ="SpringCoreProject.Project1.EmpCollection">
+<property name="empName" value ="Amit"></property>
+<property name="empId" value = "101"></property>
+	to assign values to list
+<property name="empProjectsId"> 
+	<list merge="true" value-type="java.lang.Integer"> 
+		<value>500</value>
+		<value>501</value>
+		<value>502</value>
+	</list>
+</property>
+	assign values to array
+<property name="teamMem">
+	<array merge="true" value-type="java.lang.String">
+		<value>Raj</value>
+		<value>Pal</value>
+		<value>Singh</value>
+		</array>
+</property>
+	assign values to array
+<property name="projectName">
+	<map merge="true" value-type="java.lang.String" key-type="java.lang.Integer">
+	<entry key="01" value="Project01"></entry>
+	<entry key="02" value="Project02"></entry>
+	<entry key="03" value="Project03"></entry>
+	</map>	
+</property>
+</bean> -->
+
+			<!-- Bean Association -->
+			
+<!-- <bean id ="emp1"  class ="SpringCoreProject.Project1.EmpCollection">
+<property name="empName" value ="Amit"></property>
+<property name="empId" value = "101"></property>
+<property name="address" ref="add1"></property>    we use ref to make association
+	to assign values to list
+<property name="empProjectsId"> 
+	<list merge="true" value-type="java.lang.Integer"> 
+		<value>500</value>
+		<value>501</value>
+		<value>502</value>
+	</list>
+</property>
+	assign values to array
+<property name="teamMem">
+	<array merge="true" value-type="java.lang.String">
+		<value>Raj</value>
+		<value>Pal</value>
+		<value>Singh</value>
+		</array>
+</property>
+	assign values to array
+<property name="projectName">
+	<map merge="true" value-type="java.lang.String" key-type="java.lang.Integer">
+	<entry key="01" value="Project01"></entry>
+	<entry key="02" value="Project02"></entry>
+	<entry key="03" value="Project03"></entry>
+	</map>	
+</property>
+</bean>
+
+<bean id="add1" class="SpringCoreProject.Project1.Address">
+	private Integer addId;
+	private String city; 
+  <property name="addId" value = "701"></property>
+  <property name="city" value ="Pune"></property>
+</bean> -->
+			<!-- Inner Bean Association -->
+			
+<bean id ="emp1" name="A1 A2 A3" class ="SpringCoreProject.Project1.EmpCollection">
+<property name="empName" value ="Amit"></property>
+<property name="empId" value = "101"></property>
+<property name="designation">
+	<bean id = "deg1" class="SpringCoreProject.Project1.Designation">  <!-- Inner Bean its private can,t accessed from outside -->
+		<property name="degId" value="801"></property>
+		<property name="degName" value="Manager"></property>	
+	</bean>
+</property>
+<property name="address" ref="add1"></property>    <!-- we use ref to make association -->
+	<!-- to assign values to list -->
+<property name="empProjectsId"> 
+	<list merge="true" value-type="java.lang.Integer"> 
+		<value>500</value>
+		<value>501</value>
+		<value>502</value>
+	</list>
+</property>
+	<!-- assign values to array -->
+<property name="teamMem">
+	<array merge="true" value-type="java.lang.String">
+		<value>Raj</value>
+		<value>Pal</value>
+		<value>Singh</value>
+		</array>
+</property>
+	<!-- assign values to array -->
+<property name="projectName">
+	<map merge="true" value-type="java.lang.String" key-type="java.lang.Integer">
+	<entry key="01" value="Project01"></entry>
+	<entry key="02" value="Project02"></entry>
+	<entry key="03" value="Project03"></entry>
+	</map>	
+</property>
+</bean>
+
+<bean id="add1" class="SpringCoreProject.Project1.Address">
+	<!-- private Integer addId;
+	private String city;--> 
+  <property name="addId" value = "701"></property>
+  <property name="city" value ="Pune"></property>
+</bean>
+
+<alias name="A1" alias="empalis"/>
+</beans>

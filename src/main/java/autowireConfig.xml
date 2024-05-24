@@ -1,0 +1,94 @@
+ <beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:p="http://www.springframework.org/schema/p" 
+xmlns:util="http://www.springframework.org/schema/util"
+xmlns:tx="http://www.springframework.org/schema/tx" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+<context:annotation-config></context:annotation-config>     <!-- to enable Annotation -->
+<context:component-scan base-package="SpringCoreProject.Project1"></context:component-scan> <!-- to scan bean class -->
+
+							<!-- Autowire in xml file -->
+	
+	<!-- <bean autowire="byName" id ="U1" class ="SpringCoreProject.Project1.UniversityMain"> By using autowire child beans are automatically injected
+		<property name="universityName" value ="Delhi University"></property>
+		<property name="universityId" value ="U101"></property>
+		<property name="department" ref ="d1" ></property>
+		<property name="Teacher" ref ="t1" ></property>	
+	</bean>
+	
+	<bean id="department" class ="SpringCoreProject.Project1.Department">
+		<property name="deptName" value = "Btech"></property>	
+		<property name="deptId" value ="d101"></property>
+	</bean>
+	
+	<bean id="teacher" class ="SpringCoreProject.Project1.Teacher">
+		<property name="tecName" value = "Teacher1"></property>	
+		<property name="tecId" value ="T101"></property>
+	</bean> -->
+							
+							
+							<!-- *****Autowire in java classes file using @Autowire*******-->
+																				
+<!-- 	<bean id ="U1" class ="SpringCoreProject.Project1.UniversityMain"> 
+		<property name="universityName" value ="Delhi University"></property>
+		<property name="universityId" value ="U101"></property>
+		<property name="department" ref ="d1" ></property>
+		<property name="Teacher" ref ="t1" ></property>	
+	</bean>	
+	<bean id="department" class ="SpringCoreProject.Project1.Department">
+		<property name="deptName" value = "Btech"></property>	
+		<property name="deptId" value ="d101"></property>
+	</bean>	
+	<bean id="teacher" class ="SpringCoreProject.Project1.Teacher">
+		<property name="tecName" value = "Teacher1"></property>	
+		<property name="tecId" value ="T101"></property>
+	</bean> -->
+	
+						<!-- *****setting value in java classes file using @Valur & @Autowire*******-->
+						
+<!-- 	<bean id ="U1" class ="SpringCoreProject.Project1.UniversityMain"> 
+ 	<property name="universityName" value ="Delhi University"></property>  **We remove this for @value**
+		<property name="universityId" value ="U101"></property>
+	</bean>	
+	<bean id="d105" class ="SpringCoreProject.Project1.Department">
+		<property name="deptName" value = "Btech"></property>	
+		<property name="deptId" value ="d101"></property>
+	</bean>	
+	<bean id="teacher" class ="SpringCoreProject.Project1.Teacher">
+		<property name="tecName" value = "Teacher1"></property>	
+		<property name="tecId" value ="T101"></property>
+	</bean> -->
+	
+			<!-- *****setting value in java classes file using @component @Valur & @Autowire*******-->
+	
+<!-- 		<bean id ="U1" class ="SpringCoreProject.Project1.UniversityMain"> 
+	</bean>	
+	 <bean id="d106X" class ="SpringCoreProject.Project1.Department">   *** remove this bean while using @component***
+		<property name="deptName" value = "Btech_xml"></property>	
+		<property name="deptId" value ="d101_XML"></property>
+	</bean> 
+	<bean id="T1X" class ="SpringCoreProject.Project1.Teacher">
+		<property name="tecName" value = "Teacher1"></property>	
+		<property name="tecId" value ="T101"></property>
+	</bean> -->
+	
+	
+			<!-- *****To remove xml file completelly rremove all*******-->
+
+<!-- 	<bean id ="U1"  init-method="init" destroy-method="destroy" class ="SpringCoreProject.Project1.UniversityMain"> </bean>	
+	<bean id="T1X" class ="SpringCoreProject.Project1.Teacher">
+		<property name="tecName" value = "Teacher1"></property>	
+		<property name="tecId" value ="T101"></property>
+	</bean> -->
+	
+	
+
+</beans>
